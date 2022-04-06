@@ -2,12 +2,14 @@
  * Generics
  */
 
-interface User {
+type Role = "administrator" | "editor" | "author";
+
+interface User<Role> {
   name: string;
-  role: "administrator" | "editor" | "author";
+  role: Role;
 }
 
-let user: User = {
+let user: User<Role> = {
   name: "John Doe",
   role: "administrator"
 }
@@ -19,7 +21,7 @@ console.log(user);
  * Extending Interface
  */
 
-interface Post extends User {
+interface Post extends User<Role> {
   title: string;
   likes: number;
   createdAt: Date;
@@ -46,7 +48,7 @@ interface OnlyPost {
   createdAt: Date;
 }
 
-let post2: User & OnlyPost = {
+let post2: User<"administrator" | "editor" | "author"> & OnlyPost = {
   name: user.name,
   role: user.role,
   title: "Lorem Ipsum",
