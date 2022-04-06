@@ -48,7 +48,7 @@ interface OnlyPost {
   createdAt: Date;
 }
 
-let post2: User<"administrator" | "editor" | "author"> & OnlyPost = {
+let post2: User<Role> & OnlyPost = {
   name: user.name,
   role: user.role,
   title: "Lorem Ipsum",
@@ -78,7 +78,7 @@ let post3: StrictPost = {
 
 
 /**
- * Interface with Parameters
+ * Interface with Parameters (Generics)
  */
 
 type ParameterPost = {
